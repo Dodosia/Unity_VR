@@ -6,16 +6,13 @@ using UnityEngine;
 public class S_CharacterMovement : MonoBehaviour
 {
     private float speed = 5f;
+    bool active1 = true;
+    bool active2 = true;
     public GameObject cube;
     public GameObject cube2;
 
-    private S_CubeRotation s_cube;
-    private S_Cube2Rotation s_cube2;
-
     void Start()
     {
-        s_cube = cube.GetComponent<S_CubeRotation>();
-        s_cube2 = cube2.GetComponent<S_Cube2Rotation>();
         Cursor.visible = false;
     }
 
@@ -42,25 +39,29 @@ public class S_CharacterMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if(s_cube.enabled == true)
+            if(active1 == true)
             {
-                s_cube.enabled = false;
+                cube.SetActive(false);
+                active1 = false;
             }
-            else if (s_cube.enabled == false)
+            else if (active1 == false)
             {
-                s_cube.enabled = true;
+                cube.SetActive(true);
+                active1 = true;
             }
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (s_cube2.enabled == true)
+            if (active2 == true)
             {
-                s_cube2.enabled = false;
+                cube2.SetActive(false);
+                active2 = false;
             }
-            else if (s_cube2.enabled == false)
+            else if (active2 == false)
             {
-                s_cube2.enabled = true;
+                cube2.SetActive(true);
+                active2 = true;
             }
         }
     }
